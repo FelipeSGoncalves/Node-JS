@@ -10,8 +10,10 @@ const port = 8081
 // Definindo a rota principal da aplicação e retornando uma mensagem para o cliente que acessar a mesma.
 app.get('/CtrlStore', (req, res) => res.send('Bem-vindo ao App!'))
 
-
-// Definindo a rota sobre da aplicação e retornando uma mensagem para o cliente que acessar a mesma.
-app.get('/CtrlStore/Sobre', (req, res) => res.send('Sobre do Site!'))
+// Definindo rota dinâmica que recebe e mostra parâmetros
+app.get('/CtrlStore/:controller/:id', (req, res) =>
+    // Envia o parâmetro requisitado
+    res.send("Controller: " + req.params.controller + "<br> Id: " + req.params.id),
+);
 
 app.listen(port, () => console.log(`Aplicação rodando na rota localhost:${port}/CtrlStore!`))
