@@ -17,10 +17,41 @@ const Postagem = sequelize.define('postagens', {
     conteudo: {
         type: Sequelize.TEXT
     }
+    // OBS: o Sequelize já cria o campo ID, data de criação e data de edição do registro.
 })
 
-// Realizando a criação da tabela.
-Postagem.sync({force: true})
+const Usuario = sequelize.define('usuarios', { 
+    nomeCompleto: {
+        type: Sequelize.STRING
+    },
+
+    idade:{
+        type: Sequelize.INTEGER
+    },
+
+    email: {
+        type: Sequelize.STRING
+    },
+
+    senha: {
+        type: Sequelize.STRING
+    }
+})
+
+
+// OBS: Ao criar a tabela, comente ou exclua a linha, pois sempre que rodar a aplicação a tabela será recriada do zero.
+// Realizando a criação da tabela usuarios.
+/** Usuario.sync({force: true}) */
+
+// Realizando a criação da tabela postagens.
+/** Postagem.sync({ force: true }) */
+
+Usuario.create({
+    nomeCompleto: "Felipe da Silva Gonçalves",
+    idade: 18,
+    email: "felipe.goncalves.foz@Hotmail.com",
+    senha: 123456789
+})
 
 // Realizando a conexão com o BD.
 sequelize.authenticate().then(function () {
