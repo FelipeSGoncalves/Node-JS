@@ -18,3 +18,4 @@ app.get('/CtrlStore/:controller/:id', (req, res) =>
 );
 
 app.listen(port, () => console.log(`Aplicação rodando na rota localhost:${port}/CtrlStore!`))
+
